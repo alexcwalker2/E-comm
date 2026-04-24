@@ -40,6 +40,10 @@ a:hover {
     text-decoration: underline;
 }
 
+a:has(.btn):hover {
+    text-decoration: none;
+}
+
 figure {
     display: flex;
     justify-content: center;
@@ -54,7 +58,7 @@ figure {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 auto;
+    margin: 0 auto;;
 }
 .purple {
     color: #7342dc;
@@ -100,6 +104,7 @@ li {
     text-align: center;
     border: none;
     color: #7342dc;
+    display: none;
 }
 
 .menu__backdrop {
@@ -113,6 +118,20 @@ li {
     display: flex;
     justify-content: center;
     align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.menu--open .menu__backdrop {
+    display: flex;
+    visibility: visible;
+    opacity: 1;
+}
+
+.menu--open {
+    max-height: 100vh;
+    overflow-y: hidden;
 }
 
 .btn__menu--close {
@@ -133,7 +152,8 @@ li {
     color: white;
 }
 
-.menu__link {
+.menu__list {
+    font-size: 40px;
     padding: 32px 0;
 }
 
@@ -194,8 +214,10 @@ button:active {
     font-size: 20px;
     border-radius: 4px;
     border: none;
-    max-width: 200px;
+    width: fit-content;
     align-self: center;
+    display: block;
+    margin: 0 auto;
 }
 
 .header__img--wrapper {
@@ -265,6 +287,7 @@ Highlights
 
 .highlight__wrapper {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .highlight {
@@ -298,6 +321,7 @@ Highlights
     font-size: 20px;
     color: #7342dc;
     margin-bottom: 16px;
+    text-align: center;
 }
 
 /*
@@ -413,3 +437,46 @@ footer {
     margin: 0 12px;
     padding: 0 8px;
 }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .header__description {
+        padding: 0 24px;
+    }
+    h1 {
+        font-size: 40px;
+    }
+    h2 {
+        font-size: 24px;
+    }
+    button {
+        font-size: 18px;
+    }
+    .book {
+        width: 50%
+    }
+    
+}
+
+
+
+
+/*SMALLER SCREENS*/
+
+@media (max-width: 550px) {
+    .nav__links {
+        display: none;
+    }
+    .btn__menu {
+        display: block;
+    }
+    .highlight {
+        width: 100%;
+    }
+    .highlight:not(:last-child) {
+        margin-bottom: 24px;
+    }
+}
+
+
+
